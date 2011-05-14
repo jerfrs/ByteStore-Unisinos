@@ -1,2 +1,0 @@
-Este e um arquivo de exemplo de 'pull requests'
-
