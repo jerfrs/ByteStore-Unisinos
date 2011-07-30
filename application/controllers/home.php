@@ -10,8 +10,12 @@ class Home extends CI_Controller {
     }
     
     public function index() {
+        $this->lista();
+    }
+    
+    public function lista() {
         // configuração do pagination
-        $config['base_url'] = base_url().'index.php/home/index/';
+        $config['base_url'] = base_url().'index.php/home/lista/';
         $config['total_rows'] = $this->db->count_all('produtos');
         $config['per_page'] = '5';
         $config['full_tag_open'] = '<p class="pagination">';
@@ -36,6 +40,13 @@ class Home extends CI_Controller {
         
         $this->load->view('home/index',$data);
         
+    }
+    
+    public function view() {
+        $produto = $this->produto_model->get_by_id($this->uri->segment(3));
+        $data['produto']  = $produto;
+        $data['categoria'] = $this->produto_model->get_category($produto['categoria_id']);
+        $this->load->view('home/produto',$data);
     }
 }
 

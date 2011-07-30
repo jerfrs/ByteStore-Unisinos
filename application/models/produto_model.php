@@ -19,6 +19,22 @@ class Produto_model extends CI_Model {
     public function get_fields() {
         return $this->db->list_fields('produtos');
     }
+    
+    public function get_by_id($id) {
+        $res = $this->db->get_where('produtos',array('id'=>$id));
+        return $res->row_array();
+    }
+    
+    public function get_categories() {
+        $this->db->order_by('descricao','asc');
+        $res = $this->db->get('categorias');
+        return $res->result_array();
+    }
+    
+    public function get_category($id) {
+        $res = $this->db->get_where('categorias',array('id'=>$id));
+        return $res->row_array();
+    }
 }
 
 ?>
