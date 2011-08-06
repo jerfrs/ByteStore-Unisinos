@@ -12,10 +12,27 @@ class Produto_model extends CI_Model {
     }
     
     public function get_products($qtde,$offset) {
-        $res = $this->db->get('produtos',$qtde,$offset);
-        return $res->result_array();
+        $select = 'p.id as id,';
+        $select.= 'p.nome as nome,';
+        $select.= 'p.estoque as estoque,';
+        $select.= 'p.valor as valor,';
+        $select.= 'p.data_cadastro as data,';
+        $select.= 'p.foto as foto,';
+        $select.= 'p.usuario_id as usuario,';
+        $select.= 'c.categoria as categoria';
+        $this->db->select($select);
+        $this->db->from('produtos p');
+        $this->db->join('categorias c','p.categoria_id = c.id');
+        $this->db->limit($qtde,$offset);
+        $res = $this->db->get();
+        return $res->result();
     }
 
+    public function count_categories() {
+        $this->db->where("categoria_id != ''");
+        return $this->db->count_all_results('produtos');
+    }
+    
     public function get_fields() {
         return $this->db->list_fields('produtos');
     }
