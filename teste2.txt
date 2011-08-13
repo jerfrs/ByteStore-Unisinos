@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+bla bla bla bla
+dlkfj aldkfj aldk
+=======
+bla bla bla bl
+
+Teste 552....
+>>>>>>> b2d7672566dbe54d702a14659a606e7ec785564e
