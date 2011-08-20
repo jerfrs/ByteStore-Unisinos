@@ -52,6 +52,13 @@ class Produto_model extends CI_Model {
         $res = $this->db->get_where('categorias',array('id'=>$id));
         return $res->row_array();
     }
+    
+    public function delete($id) {
+        
+    }
+    
+    public function update($id) {
+        
+    }
 }
-
-?>
+/* fim do arquivo models/produto_model.php */
