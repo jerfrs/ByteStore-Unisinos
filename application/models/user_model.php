@@ -6,21 +6,21 @@ class User_model extends CI_Model {
     }
     
     public function get_all_users() {
-        $res = $this->db->get('usuarios'); 
+        $res = $this->db->get('users'); 
         return $res->result_array(); // equivalente ao mysql_fetch_array()
     }
     
     public function count_users() {
         $this->db->where("id != ''");
-        return $this->db->count_all_results('usuarios');
+        return $this->db->count_all_results('users');
     }
     
     public function get_fields() {
-        return $this->db->list_fields('usuarios');
+        return $this->db->list_fields('users');
     }
     
     public function get_by_id($id) {
-        $res = $this->db->get_where('usuarios',array('id'=>$id));
+        $res = $this->db->get_where('users',array('id'=>$id));
         return $res->row_array();
     }
       

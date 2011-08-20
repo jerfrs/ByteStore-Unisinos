@@ -22,20 +22,20 @@ class User extends CI_Controller {
         $config['full_tag_close'] = '</p>';
         $config['first_link'] = '<<';
         $config['last_link'] = '>>';
-        $usuarios = $this->user_model->get_all_users($config['per_page'],$this->uri->segment(3,0));
+        $users = $this->user_model->get_all_users($config['per_page'],$this->uri->segment(3,0));
         
         $this->pagination->initialize($config);
         
-        $data['usuarios'] = $usuarios;
+        $data['users'] = $users;
         $data['titulo'] = "Usuarios";
         
         $this->load->view('admin/user/index',$data);
     }
     
     public function view() {
-        $usuario = $this->user_model->get_by_id($this->uri->segment(3));
-        $data['usuario']  = $usuario;
-        $this->load->view('usuarios',$data);
+        $user = $this->user_model->get_by_id($this->uri->segment(3));
+        $data['username']  = $user;
+        $this->load->view('users',$data);
     }
     
     public function edit() {
